@@ -25,7 +25,7 @@ def json_or_jquery(response):
 def get_number(text):
     """Get positive number from text."""
 
-    r = re.search(r"\d*", text)
+    r = re.search(r"\d{1,3}", text)
     if not r:
         raise ParserError(
             "Unable to find number from string \'{}\'".format(text),

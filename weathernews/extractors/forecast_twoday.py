@@ -32,11 +32,8 @@ class ForecastTwodayExtractor(Extractor):
             for r in rain:
                 rain_zipped = list(zip(r.find_all("th"), r.find_all("td")))
                 for rz in rain_zipped:
-                    r_hr = get_number(rz[0].text)
-                    r_pt = get_number(rz[1].text)
-
-                    hr = int(r_hr.group())
-                    pt = int(r_pt.group()) if r_pt else 0
+                    hr = get_number(rz[0].text)
+                    pt = get_number(rz[1].text) if rz[1].text != "- %" else 0
 
                     precip.append(Precip(hour=hr, pt=pt))
 
